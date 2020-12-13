@@ -1,0 +1,47 @@
+.app-header {
+  height: 50px;
+  z-index: 20;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px 0px;
+}
+
+.header-contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 30px;
+  margin-right: 50px;
+}
+
+.logo {
+  vertical-align: middle;
+  padding: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.login {
+  width: 100px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  text-align: center;
+  color: #fff;
+  vertical-align: middle;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.50rem;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+}

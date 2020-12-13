@@ -1,0 +1,18 @@
+.searchBar {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.searchInput {
+  padding: 15px 25px 17px 20px;
+  line-height: 1.5;
+  width: 40%;
+  border: 1px solid #c7c4c4;
+  border-radius: 0.25rem;
+  font-size: 15px;
+  background-image: url('../img/search.png');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}

@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Circle } from './components/Circle';
+import './styles/index.scss';
+import { Bubble } from './components/Bubble';
+import Main from './pages/Main';
 
 function App() {
   return (
     <div className="App">
-      <Circle data={[1,2,3]}/>
+      <Bubble data={[1, 2, 3]} />
+      <Main />
     </div>
   );
 }
