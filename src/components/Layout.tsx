@@ -12,10 +12,11 @@ const Layout = () => {
         <LineChart />
       </div>
       <div className="card-layout">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card name="Card1"/>
+        <Card name="Card2"/>
+        <Card name="Card3"/>
+        <Card name="Card4" />
+        <Card name="Card5" />
       </div>
     </div>
   );

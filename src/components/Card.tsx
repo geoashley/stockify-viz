@@ -1,10 +1,16 @@
 import React from 'react';
 import '../styles/card.scss';
 
-const Card = () => {
+interface IProps {
+  name?: string;
+}
+
+const Card = (props: IProps) => {
+  const { name } = props;
   return (
-    <a className="card-wrapper" href="#">
-      <div className="card-item">Card</div>
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <a className="card-wrapper">
+      <div className="card-item">{name}</div>
     </a>
   );
 }
