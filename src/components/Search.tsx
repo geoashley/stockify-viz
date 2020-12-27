@@ -4,16 +4,20 @@ import ClearIcon from '@material-ui/icons/Clear';
 import '../styles/search.scss';
 import { searchQuery } from '../actions/searchActions';
 
-const Search = () => {
-  
+function Search() {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Array<string>>([]);
 
-  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+  const handleInputChange = async (ev: React.ChangeEvent<HTMLInputElement>) => {
+    ev.preventDefault();
+    if (ev.target.value === '') {
+      setQuery('');
+      setSearchResults([]);
+      return;
+    }
+    setQuery(ev.target.value);
     const results = await searchQuery(query);
     setSearchResults(results);
-    console.log(results);
   };
 
   const handleClearText = () => {
@@ -25,19 +29,20 @@ const Search = () => {
     <div className="search-container">
       <div className="search-box">
         <SearchIcon color="action" />
-        <input className="search-input" type="text"
-          name="search" placeholder="Search..." autoComplete="off"
-          onChange={handleInputChange} value={query} />
+        <label htmlFor="search"></label>
+        <input className="search-input" type="text" id="search"
+          name="search" placeholder="Search..." autoComplete="off" aria-label="Search" value={query} onChange={handleInputChange} />
         {query !== '' &&
           <ClearIcon onClick={handleClearText} />
         }
       </div>
       {searchResults.length > 0 &&
         <div className="autocomplete">
-          <ul className="search-list">
+        <ul className="search-list">
             {searchResults.map(item => (
-              <li className="list-results">
-                <span>{item}</span></li>
+              <li key={item.toString()} className="list-results">
+                <button>{item}</button>
+              </li>
             ))}
           </ul>
         </div>

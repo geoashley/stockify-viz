@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/header.scss';
 
-const Header = () => {
+function Header() {
   return (
     <div className="app-header">
       <div className="header-contents">
-        <div className="logo">stockify</div>
-        <button className="login">login</button>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <div className="logo">stockify</div>
+        </Link>
+        <Link to="/login"><button className="login">login</button></Link>
       </div>
     </div>
   );

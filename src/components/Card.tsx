@@ -5,7 +5,7 @@ interface IProps {
   name?: string;
 }
 
-const Card = (props: IProps) => {
+function Card(props: IProps) {
   const { name } = props;
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid

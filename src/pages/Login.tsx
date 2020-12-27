@@ -1,8 +1,19 @@
 import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-const Login = () => {
+function Login() {
+  
   return (
-    <div>Login</div>
+    <>
+      <Header />
+      <div>
+        <div>TWITTER Login</div>
+        <div>GOOGLE Login</div>
+        <div>facebook</div>
+      </div>
+      <Footer />
+    </>
   );
 }
 

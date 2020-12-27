@@ -1,14 +1,26 @@
 import React from 'react';
-import './styles/index.scss';
-import { Circle } from './components/Circle';
+import { Switch, Route } from 'react-router-dom';
+// import { Circle } from './components/Circle';
 import Main from './pages/Main';
+import Login from './pages/Login';
+import Error from './pages/Error';
+import './styles/index.scss';
 
 function App() {
   return (
-    <div className="App">
-      <Circle data={[1, 2, 3]} />
-      <Main />
-    </div>
+    <main>
+      <Switch>
+        <Route path="/" exact>
+          <Main />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route>
+          <Error />
+        </Route>
+      </Switch>
+    </main>
   );
 }
 

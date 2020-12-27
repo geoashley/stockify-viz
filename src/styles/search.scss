@@ -10,7 +10,7 @@
   display: inline-flex;
   position: relative;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 5px 10px;
   width: 40%;
 }
@@ -30,7 +30,7 @@
 }
 
 .autocomplete {
-  width: 42%;
+  width: 40%;
   max-height: 100px;
   background: #fff;
   box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28);
@@ -40,6 +40,8 @@
   border-radius: 0 0 5px 5px;
   padding: 10px 0;
   overflow: auto;
+  position: absolute;
+  top: 147px;
 }
 
 ul.search-list{
@@ -54,14 +56,17 @@ li.list-results {
   cursor: default;
 }
 
+li.list-results button {
+  padding: 10px 5px;
+  border: none;
+  width: 100%;
+  background: none;
+  text-align: left;
+}
+
 li.list-results:hover {
   background: #eee;
 }
-
-li.list-results span {
-  padding: 10px 5px;
-}
-
 
 @media only screen and (min-width : 150px) and (max-width : 780px) {
   .search-container {
@@ -72,6 +77,6 @@ li.list-results span {
     margin: 0 auto;
   }
   .autocomplete {
-    width: 100%;
+    width: 82%;
   }
 }

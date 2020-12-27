@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Facets = () => {
+function Facets() {
   return (
     <div>Facets</div>
   );

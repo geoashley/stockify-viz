@@ -1,15 +1,15 @@
 import React from 'react';
 import Search from './Search';
-import LineChart from './charts/LineChart';
+// import LineChart from './charts/LineChart';
 import Card from './Card';
 import '../styles/index.scss';
 
-const Layout = () => {
+function Layout() {
   return (
     <div className="layout-wrapper">
       <Search />
       <div className="chart-layout">
-        <LineChart />
+        {/* <LineChart data={data} width={400} height={300} /> */}
       </div>
       <div className="card-layout">
         <Card name="Card1"/>
