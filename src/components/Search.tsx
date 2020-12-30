@@ -5,7 +5,7 @@ import '../styles/search.scss';
 import { searchQuery } from '../actions/searchActions';
 import SearchResult from '../interfaces/search.interface'
 
-function Search() {
+function Search({ onSelection }) {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Array<SearchResult>>([]);
 
@@ -39,10 +39,13 @@ function Search() {
       </div>
       {searchResults.length > 0 &&
         <div className="autocomplete">
-        <ul className="search-list">
+          <ul className="search-list">
             {searchResults.map(item => (
               <li key={item.symbol} className="list-results">
-                <button>{item.symbol + " "+item.securityName}</button>
+                <button key={item.symbol} onClick={() => {
+                  onSelection(item);
+                  handleClearText();
+                }}>{item.symbol + " " + item.securityName}</button>
               </li>
             ))}
           </ul>
