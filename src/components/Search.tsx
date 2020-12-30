@@ -3,10 +3,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
 import '../styles/search.scss';
 import { searchQuery } from '../actions/searchActions';
+import SearchResult from '../interfaces/search.interface'
 
 function Search() {
   const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Array<string>>([]);
+  const [searchResults, setSearchResults] = useState<Array<SearchResult>>([]);
 
   const handleInputChange = async (ev: React.ChangeEvent<HTMLInputElement>) => {
     ev.preventDefault();
@@ -16,7 +17,7 @@ function Search() {
       return;
     }
     setQuery(ev.target.value);
-    const results = await searchQuery(query);
+    const results = await searchQuery(ev.target.value);
     setSearchResults(results);
   };
 
@@ -40,8 +41,8 @@ function Search() {
         <div className="autocomplete">
         <ul className="search-list">
             {searchResults.map(item => (
-              <li key={item.toString()} className="list-results">
-                <button>{item}</button>
+              <li key={item.symbol} className="list-results">
+                <button>{item.symbol + " "+item.securityName}</button>
               </li>
             ))}
           </ul>
