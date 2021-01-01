@@ -1,11 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import SearchResult from "../interfaces/search.interface";
+import { convertToRepresentation } from '../util/numericUtil';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +48,7 @@ export default function Title({ selectedSecurity }) {
           <Grid item>
             <div className={classes.section2}>
               <Typography gutterBottom variant="body1">
-                Market Cap {selectedSecurity.marketCap} (since{" "}
+                Market Cap {convertToRepresentation(selectedSecurity.marketCap)} (since{" "}
                 {selectedSecurity.ipoYear})
               </Typography>
             </div>
@@ -72,3 +71,5 @@ export default function Title({ selectedSecurity }) {
     </div>
   );
 }
+
+   

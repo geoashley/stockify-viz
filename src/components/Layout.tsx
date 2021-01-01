@@ -18,12 +18,9 @@ function Layout() {
       </div>
       {selectedSecurity != null &&
         <div className="chart-layout">
-
           <Title selectedSecurity={selectedSecurity}></Title>
         </div>
-
       }
-
       <div className="card-layout">
         <Card name="Card1" />
         <Card name="Card2" />
