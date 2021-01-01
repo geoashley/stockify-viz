@@ -5,6 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initFacebookSdk } from './helpers';
 import './index.css';
+import { Grommet } from 'grommet';
+
+const theme = {
+  global: {
+    font: {
+      family: 'Roboto',
+      size: '14px',
+      height: '20px',
+      backgroundColor: 'black'
+    },
+  },
+};
 
 initFacebookSdk().then(startApp);
 
@@ -12,7 +24,9 @@ function startApp() {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
+        <Grommet theme={theme}>
           <App />
+        </Grommet>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
