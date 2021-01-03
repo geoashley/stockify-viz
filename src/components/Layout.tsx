@@ -1,34 +1,58 @@
-import React, { useState } from 'react';
-import Search from './Search';
-// import LineChart from './charts/LineChart';
-import Card from './Card';
-import '../styles/index.scss';
-import SearchResult from '../interfaces/search.interface';
-import Title from './Title';
+import React, { useState, useContext } from "react";
+import { Box, Grid, ResponsiveContext } from "grommet";
+import Search from "./Search";
+import "../styles/index.scss";
+import SearchResult from "../interfaces/search.interface";
+import Title from "./Title";
+import { MarketCapRef,MarketCap } from "./MarketCap";
+import {
+  responsiveAreas,
+  responsiveColumns,
+  responsiveRows,
+} from "../util/responsive";
+import { aggregateQuery } from "../actions/aggregateActions";
+
+
 
 function Layout() {
+  const bubbleRef = React.useRef() as React.MutableRefObject<MarketCapRef>;
 
   const [selectedSecurity, setSelectedSecurity] = useState<SearchResult>();
+  const size = useContext(ResponsiveContext);
+
+  const handleSearchSelection = async (e:SearchResult) => {
+    const results = await aggregateQuery(e.industry,e.sector);
+    e.industryMarketCap = results;
+    setSelectedSecurity(e)
+    if(bubbleRef && bubbleRef.current){
+      bubbleRef.current.updateLegend(e);
+    }
+    
+  };
 
   return (
-    <div className="layout-wrapper">
-      <Search onSelection={(e: SearchResult) => setSelectedSecurity(e)} />
-      <div className="chart-layout">
-        {/* <LineChart data={data} width={400} height={300} /> */}
-      </div>
-      {selectedSecurity != null &&
-        <div className="chart-layout">
-          <Title selectedSecurity={selectedSecurity}></Title>
+    <Box flex={false}>
+      <Search onSelection={(e: SearchResult) => handleSearchSelection(e) }/>
+      {selectedSecurity != null && (
+        <div>
+          <Title selectedSecurity={selectedSecurity} />
+          <Grid
+            align="center"
+            gap="medium"
+            rows={responsiveRows[size]}
+            columns={responsiveColumns[size]}
+            areas={responsiveAreas[size]}
+          >
+            <MarketCap
+              ref={bubbleRef}
+              cardname="Market Cap"
+              gridArea="conversations"
+              selectedSecurity={selectedSecurity}
+            />
+          </Grid>
         </div>
-      }
-      <div className="card-layout">
-        <Card name="Card1" />
-        <Card name="Card2" />
-        <Card name="Card3" />
-        <Card name="Card4" />
-        <Card name="Card5" />
-      </div>
-    </div>
+      )}
+    </Box>
   );
 }
 

@@ -37,7 +37,8 @@ function Search({ onSelection }) {
           <ClearIcon onClick={handleClearText} />
         }
       </div>
-      {searchResults.length > 0 &&
+      {searchResults 
+      && searchResults.length > 0 &&
         <div className="autocomplete">
           <ul className="search-list">
             {searchResults.map(item => (

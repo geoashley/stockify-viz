@@ -8,6 +8,7 @@ export default interface SearchResult {
     ipoYear: string,
     volume: string,
     sector: string,
-    industry: string
+    industry: string,
+    industryMarketCap:string
   
   }

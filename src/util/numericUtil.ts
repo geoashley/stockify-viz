@@ -1,7 +1,7 @@
 export function convertToRepresentation(labelValue: string) {
-  // Eleven Zeroes for Trillion
-  return Math.abs(Number(labelValue)) >= 1.0e11
-    ? (Math.abs(Number(labelValue)) / 1.0e11).toFixed(2) + " T"
+  // twele Zeroes for Trillion
+  return Math.abs(Number(labelValue)) >= 1.0e12
+    ? (Math.abs(Number(labelValue)) / 1.0e12).toFixed(2) + " T"
       // Nine Zeroes for Billions
     : Math.abs(Number(labelValue)) >= 1.0e9
     ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + " B"

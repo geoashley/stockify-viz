@@ -1,16 +1,11 @@
 import React from 'react';
 import '../styles/card.scss';
 
-interface IProps {
-  name?: string;
-}
-
-function Card(props: IProps) {
-  const { name } = props;
+function Card({ children, name}) {
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a className="card-wrapper">
-      <div className="card-item">{name}</div>
+      <div className="card-item">{children}</div>
     </a>
   );
 }
