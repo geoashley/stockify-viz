@@ -1,15 +1,22 @@
-import React from "react";
-import { Box, Text, Heading } from "grommet";
+import React, { useContext } from "react";
+import { Context } from '../store'
+import '../styles/title.scss';
+import { securityDisplayname } from "../util/securityUtils";
 
-export default function Title({ selectedSecurity, ...rest }) {
+export default function Title({ name: symbol, value, fullName, ...rest }) {
+  const { state } = useContext(Context);
+  console.log(state)
   return (
-    <Box round pad="medium" direction="column" background="white" {...rest}>
-      <Heading level="3" margin="none" size="xxsmall">
-        {selectedSecurity.symbol}
-      </Heading>
-      <Text size="25px" weight="bold">
-        {selectedSecurity.lastSale}
-      </Text>
-    </Box>
+    <div className="title"  {...rest}>
+      <div className="container">
+        <h3 className="heading">
+          {symbol && symbol + ' $' + value}
+        </h3>
+        <p className="fullname" >
+          {symbol && securityDisplayname(fullName)}
+        </p>
+      </div>
+    </div>
   );
 }
+

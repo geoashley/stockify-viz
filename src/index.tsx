@@ -6,8 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { initFacebookSdk } from './helpers';
 import './index.css';
 import { Grommet } from 'grommet';
+import Store from './store'
 
 const theme = {
+  themeMode: 'dark',
   global: {
     font: {
       family: 'Roboto',
@@ -16,19 +18,32 @@ const theme = {
       backgroundColor: 'black'
     },
   },
+  card: {
+    container: {
+      background: '#FFFFFF12',
+      elevation: 'none',
+    },
+    footer: {
+      pad: { horizontal: 'medium', vertical: 'small' },
+      background: '#FFFFFF06',
+    },
+  },
 };
 
 initFacebookSdk().then(startApp);
 
+
+
+
 function startApp() {
   ReactDOM.render(
-    <React.StrictMode>
+    <Store>
       <BrowserRouter>
         <Grommet theme={theme}>
           <App />
         </Grommet>
       </BrowserRouter>
-    </React.StrictMode>,
+    </Store>,
     document.getElementById('root')
   );
 }

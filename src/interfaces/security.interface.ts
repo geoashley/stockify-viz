@@ -1,4 +1,7 @@
-export default interface SearchResult {
+import Company from "./company.interface";
+import RelatedCompany from "./relatedCompany.interface";
+
+export default interface Security {
     symbol: string,
     securityName: string,
     lastSale: string,
@@ -9,6 +12,6 @@ export default interface SearchResult {
     volume: string,
     sector: string,
     industry: string,
-    industryMarketCap:string
+    companyDetails: Company
   
   }

@@ -3,11 +3,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
 import '../styles/search.scss';
 import { searchQuery } from '../actions/searchActions';
-import SearchResult from '../interfaces/search.interface'
+import Security from '../interfaces/security.interface'
+import { securityDisplayname } from '../util/securityUtils';
 
 function Search({ onSelection }) {
   const [query, setQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Array<SearchResult>>([]);
+  const [searchResults, setSearchResults] = useState<Array<Security>>([]);
 
   const handleInputChange = async (ev: React.ChangeEvent<HTMLInputElement>) => {
     ev.preventDefault();
@@ -46,7 +47,7 @@ function Search({ onSelection }) {
                 <button key={item.symbol} onClick={() => {
                   onSelection(item);
                   handleClearText();
-                }}>{item.symbol + " " + item.securityName}</button>
+                }}>{item.symbol + " " + securityDisplayname(item.securityName)}</button>
               </li>
             ))}
           </ul>

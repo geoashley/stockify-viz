@@ -1,41 +1,34 @@
 import React, { useState, useContext } from "react";
 import { Box, Grid, ResponsiveContext } from "grommet";
-import Search from "./Search";
 import "../styles/index.scss";
-import SearchResult from "../interfaces/search.interface";
 import Title from "./Title";
-import { MarketCapRef,MarketCap } from "./MarketCap";
+import { MarketCapRef,MarketCap } from "./financial/MarketCap";
 import {
   responsiveAreas,
   responsiveColumns,
   responsiveRows,
 } from "../util/responsive";
-import { aggregateQuery } from "../actions/aggregateActions";
-
+import { PERatio, PERatioRef } from "./financial/PERatio";
+import {Context} from '../store'
 
 
 function Layout() {
   const bubbleRef = React.useRef() as React.MutableRefObject<MarketCapRef>;
-
-  const [selectedSecurity, setSelectedSecurity] = useState<SearchResult>();
+  const peRef = React.useRef() as React.MutableRefObject<PERatioRef>;
+  const {state} = useContext(Context);
   const size = useContext(ResponsiveContext);
 
-  const handleSearchSelection = async (e:SearchResult) => {
-    const results = await aggregateQuery(e.industry,e.sector);
-    e.industryMarketCap = results;
-    setSelectedSecurity(e)
-    if(bubbleRef && bubbleRef.current){
-      bubbleRef.current.updateLegend(e);
-    }
-    
-  };
-
   return (
-    <Box flex={false}>
-      <Search onSelection={(e: SearchResult) => handleSearchSelection(e) }/>
-      {selectedSecurity != null && (
+    <Box flex={false} >
+      {state.selectedSecurity != null && (
         <div>
-          <Title selectedSecurity={selectedSecurity} />
+          <div className="flexbox-container">
+          <Title name={state.selectedSecurity.symbol} value={state.selectedSecurity.lastSale} fullName={state.selectedSecurity.securityName}/>
+          {state.relatedCompanies.length>0 && state.relatedCompanies.map((item)=>
+                    <Title name={item.symbol} value={item.lastSale} fullName={item.securityName}/>
+          )}
+
+          </div>
           <Grid
             align="center"
             gap="medium"
@@ -46,8 +39,12 @@ function Layout() {
             <MarketCap
               ref={bubbleRef}
               cardname="Market Cap"
-              gridArea="conversations"
-              selectedSecurity={selectedSecurity}
+              gridArea="marketcap"
+            />
+            <PERatio
+              ref={peRef}
+              cardname="PE Ratio"
+              gridArea="pe"
             />
           </Grid>
         </div>
