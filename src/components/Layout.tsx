@@ -1,55 +1,48 @@
-import React, { useState, useContext } from "react";
-import { Box, Grid, ResponsiveContext } from "grommet";
+import React, {  useContext } from "react";
 import "../styles/index.scss";
+import "../styles/layout.scss";
 import Title from "./Title";
-import { MarketCapRef,MarketCap } from "./financial/MarketCap";
-import {
-  responsiveAreas,
-  responsiveColumns,
-  responsiveRows,
-} from "../util/responsive";
+import { MarketCapRef, MarketCap } from "./financial/MarketCap";
 import { PERatio, PERatioRef } from "./financial/PERatio";
-import {Context} from '../store'
+import { Context } from '../store'
 
 
 function Layout() {
   const bubbleRef = React.useRef() as React.MutableRefObject<MarketCapRef>;
   const peRef = React.useRef() as React.MutableRefObject<PERatioRef>;
-  const {state} = useContext(Context);
-  const size = useContext(ResponsiveContext);
+  const { state } = useContext(Context);
 
   return (
-    <Box flex={false} >
+    <div >
       {state.selectedSecurity != null && (
         <div>
           <div className="flexbox-container">
-          <Title name={state.selectedSecurity.symbol} value={state.selectedSecurity.lastSale} fullName={state.selectedSecurity.securityName}/>
-          {state.relatedCompanies.length>0 && state.relatedCompanies.map((item)=>
-                    <Title name={item.symbol} value={item.lastSale} fullName={item.securityName}/>
-          )}
+            <Title name={state.selectedSecurity.symbol} value={state.selectedSecurity.lastSale} fullName={state.selectedSecurity.securityName} />
+            {state.relatedCompanies.length > 0 && state.relatedCompanies.map((item) =>
+              <Title name={item.symbol} value={item.lastSale} fullName={item.securityName} />
+            )}
 
           </div>
-          <Grid
-            align="center"
-            gap="medium"
-            rows={responsiveRows[size]}
-            columns={responsiveColumns[size]}
-            areas={responsiveAreas[size]}
-          >
+          <div className="cards">
+            <div className="card">
             <MarketCap
               ref={bubbleRef}
               cardname="Market Cap"
               gridArea="marketcap"
             />
+
+            </div>
+            <div className="card">
             <PERatio
               ref={peRef}
               cardname="PE Ratio"
               gridArea="pe"
             />
-          </Grid>
+            </div>
+          </div>
         </div>
       )}
-    </Box>
+    </div>
   );
 }
 

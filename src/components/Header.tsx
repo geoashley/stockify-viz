@@ -36,7 +36,9 @@ function Header() {
         </Link>
         <Search onSelection={(e: Security) => handleSearchSelection(e)} />
         <Link to="/login"><button className="login">login</button></Link>
+
       </div>
+
     </div>
   );
 }

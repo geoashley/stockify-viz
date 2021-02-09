@@ -1,32 +1,26 @@
 import React, { useImperativeHandle, useState, useContext } from "react";
-import { Box, Stack , Text, Card} from "grommet";
+import { Stack } from "grommet";
 import { CardHeading } from "../CardHeading";
 import { CardLegend } from "../CardLegend";
 import Security from "../../interfaces/security.interface";
 import { convertToRepresentation } from "../../util/numericUtil";
 import { Context, Store } from "../../store";
+import "../../styles/card.scss";
 
 const accentColors = [
-  "accent-4",
-  "accent-3",
-  "neutral-3",
-  "accent-1",
-  "neutral-1",
-  "neutral-2",
-  "brand",
+  "rgba(255,127,80,0.5)",
+  "rgba(69, 67, 114,0)",
+  "rgba(242, 244, 203)",
+  "#4040a1",
+  "#f4e1d2",
+  "#f18973",
+  "#bc5a45",
 ];
 
-const Square = ({ symbol, size, color,mCap, ...rest }) => (
-  <Box
-    width={size}
-    height={size}
-    background={color}
-    animation={{ size: "xlarge", type: "zoomIn" }}
-    {...rest}>
-      <Text alignSelf="center" margin="xsmall" weight="bold" size="xsmall">
-      {symbol+` ${convertToRepresentation(mCap)}`}
-      </Text> 
-    </Box>
+const Square = ({ symbol, size, color, mCap, ...rest }) => (
+  <div style={{ width: size, height: size, background: color }} {...rest}>
+    <h4>{symbol + ` ${convertToRepresentation(mCap)}`}</h4>
+  </div>
 );
 interface LegendInfo {
   name: string;
@@ -73,43 +67,33 @@ export const MarketCap = React.forwardRef<MarketCapRef, MarketCapProps>(
         let sortedList = state.relatedCompanies.sort((a, b) => {
           return parseFloat(b.marketCap) - parseFloat(a.marketCap);
         });
-        return (
-            sortedList.map((item, index) => {
-              return <Square
-                symbol={item.symbol}
-                mCap={item.marketCap}
-                key={item.symbol}
-                size={calcRelativeSize(item.marketCap)}
-                color={accentColors[index + 2]}
-                elevation="large"
-              />;
-            })
-            
-        );
+        return sortedList.map((item, index) => {
+          return (
+            <Square
+              symbol={item.symbol}
+              mCap={item.marketCap}
+              key={item.symbol}
+              size={calcRelativeSize(item.marketCap)}
+              color={accentColors[index + 2]}
+              elevation="large"
+            />
+          );
+        });
       }
     };
 
     return (
-
-      <CardHeading
-        title={cardname}
-        pad={{ horizontal: "small", vertical: "medium" }}
-        width="450px"
-        height="450px"
-        {...rest}
-      >
-        <Box
-          direction="row"
-          pad={{ horizontal: "xxsmall", vertical: "xxsmall" }}
-          alignSelf="center"
-          align="center"
-        >
+      <div className="card-wrapper" {...rest}>
+        <h3> {cardname}</h3>
+        <div>
           {selectedSecurity && industryMarketCap && (
             <Stack anchor="bottom-left">
               <Square
-                symbol={selectedSecurity.industry+" - "+selectedSecurity.sector}
+                symbol={
+                  selectedSecurity.industry + " - " + selectedSecurity.sector
+                }
                 key={state.industryMarketCap}
-                mCap={state.selectedSecurity?.marketCap}
+                mCap={state.industryMarketCap}
                 size="400px"
                 color={accentColors[1]}
                 elevation="large"
@@ -127,10 +111,9 @@ export const MarketCap = React.forwardRef<MarketCapRef, MarketCapProps>(
               {getRelatedStack()}
             </Stack>
           )}
-        </Box>
-        <Box flex />
+        </div>
         <CardLegend items={getLegend(state)} />
-      </CardHeading>
+      </div>
     );
   }
 );

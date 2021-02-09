@@ -5,17 +5,16 @@
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   transition: transform 300ms ease-in-out;
-  color: rgb(106, 106, 106);
   text-align: left;
   cursor:pointer;
-  width: 20%;
-  height: 100px;
+  width: 80%;
+  height: 500px;
   text-decoration: none;
 }
 
 .card-wrapper:hover {
   flex: 0 0 300px;
-  height: 300px;
+  height: 600px;
   border-color: rgb(238, 238, 238);
   transform: translate3d(0, -5px, 0);
 }
