@@ -5,21 +5,22 @@ import { CardLegend } from "../CardLegend";
 import Security from "../../interfaces/security.interface";
 import { convertToRepresentation } from "../../util/numericUtil";
 import { Context, Store } from "../../store";
-import "../../styles/card.scss";
-
+import "../../styles/marketcap.scss";
 const accentColors = [
-  "rgba(255,127,80,0.5)",
-  "rgba(69, 67, 114,0)",
-  "rgba(242, 244, 203)",
+  "#2a9d8f", 
+  "#355070",
+  "#d62828",
   "#4040a1",
   "#f4e1d2",
-  "#f18973",
-  "#bc5a45",
+  "#06d6a0",
+  "#4361ee",
+  "#023e8a",
+  "#fca311"
 ];
 
 const Square = ({ symbol, size, color, mCap, ...rest }) => (
   <div style={{ width: size, height: size, background: color }} {...rest}>
-    <h4>{symbol + ` ${convertToRepresentation(mCap)}`}</h4>
+    <h4 className='bubble-name'>{symbol + ` ${convertToRepresentation(mCap)}`}</h4>
   </div>
 );
 interface LegendInfo {
@@ -83,7 +84,7 @@ export const MarketCap = React.forwardRef<MarketCapRef, MarketCapProps>(
     };
 
     return (
-      <div className="card-wrapper" {...rest}>
+      <div  {...rest}>
         <h3> {cardname}</h3>
         <div>
           {selectedSecurity && industryMarketCap && (
@@ -121,11 +122,11 @@ export const MarketCap = React.forwardRef<MarketCapRef, MarketCapProps>(
 const getLegend = (state: Store) => {
   let arr: { name: string; color: string; value: string }[] = [];
   if (state.selectedSecurity) {
-    // arr.push({
-    //   name: state.selectedSecurity.symbol,
-    //   color: accentColors[0],
-    //   value: convertToRepresentation(state.selectedSecurity.marketCap),
-    // });
+    arr.push({
+      name: state.selectedSecurity.symbol,
+      color: accentColors[0],
+      value: convertToRepresentation(state.selectedSecurity.marketCap),
+    });
     state.relatedCompanies &&
       state.relatedCompanies
         .sort((a, b) => {

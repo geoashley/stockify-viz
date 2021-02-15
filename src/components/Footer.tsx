@@ -3,7 +3,7 @@ import '../styles/footer.scss';
 
 function Footer() {
   return (
-    <div className="footer">footer</div>
+    <div className="footer">About</div>
   );
 }
 

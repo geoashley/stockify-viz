@@ -1,43 +1,4 @@
-.card-wrapper {
-  margin: 20px;
-  padding: 10px 40px;
-  border: 1px solid rgba(184, 196, 194, 0.25);
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  transition: transform 300ms ease-in-out;
-  text-align: left;
-  cursor:pointer;
-  width: 80%;
-  height: 500px;
-  text-decoration: none;
-}
 
-.card-wrapper:hover {
-  flex: 0 0 300px;
-  height: 600px;
-  border-color: rgb(238, 238, 238);
-  transform: translate3d(0, -5px, 0);
-}
-
-.card-wrapper:focus {
-  flex: 0 0 300px;
-  height: 300px;
-  border-color: rgb(238, 238, 238);
-}
-
-.card-item {
-  padding: 10px;
-}
-
-.card-title {
-  color: #fff;
-  font-weight: 300;
-}
-
-.card-description {
-  color: #fff;
-  font-weight: 300;
-}
 
 @media only screen and (min-width : 150px) and (max-width : 780px) {
   .card-wrapper {

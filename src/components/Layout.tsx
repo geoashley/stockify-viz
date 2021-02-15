@@ -1,5 +1,4 @@
 import React, {  useContext } from "react";
-import "../styles/index.scss";
 import "../styles/layout.scss";
 import Title from "./Title";
 import { MarketCapRef, MarketCap } from "./financial/MarketCap";
@@ -15,8 +14,8 @@ function Layout() {
   return (
     <div >
       {state.selectedSecurity != null && (
-        <div>
-          <div className="flexbox-container">
+        <div className="main-container"> 
+          <div className="title-container">
             <Title name={state.selectedSecurity.symbol} value={state.selectedSecurity.lastSale} fullName={state.selectedSecurity.securityName} />
             {state.relatedCompanies.length > 0 && state.relatedCompanies.map((item) =>
               <Title name={item.symbol} value={item.lastSale} fullName={item.securityName} />

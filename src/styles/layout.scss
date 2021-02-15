@@ -1,22 +1,51 @@
+.cards {
+  max-width: 1200px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+}
 
 .card {
-    padding: 1rem;
-    height: 35rem;
-  }
-  
+  margin: 10px;
+  background-color: #1E2137;
+
+  padding: 1rem;
+  height: 35rem;
+  color: #24bbab;
+
+  -webkit-box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+    0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+    0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  -webkit-box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+    0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+    0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
   .cards {
-    max-width: 1200px;
-    display: grid;
-    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Screen larger than 600px? 2 column */
-  @media (min-width: 600px) {
-    .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Screen larger than 900px? 3 columns */
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  /* Screen larger than 900px? 3 columns */
-  @media (min-width: 900px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
-  }
-  
+}
+
+.main-container {
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+}

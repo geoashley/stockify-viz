@@ -1,5 +1,6 @@
 export const securityDisplayname = (name: String) => {
     return name.replace(' Common Stock', '')
+      .replace('American depositary shares each  representing one Class A ordinary share','')
       .replace('American depositary shares each representing one Class A ordinary share','')
       .replace('American Depositary Shares', '')
       .replace('each representing eight Ordinary share', '')

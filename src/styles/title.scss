@@ -1,8 +1,22 @@
 .title {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.2s;
-    width: 20%;
-    
+    width: 12%;
+    margin: 5px;
+    background-color: #1E2137;
+
+    // background-color: #2a2d3b;
+
+
+  }
+  .title h3{
+    color:#FFFFFF;
+    font-size: 90%;
+  }
+  .title p{
+    color:#E8E8E8;
+    font-size: 70%;
+
   }
   
   .title:hover {
@@ -18,6 +32,6 @@
   
   .fullname{
 
-  
+    color:#E8E8E8;
   
   }

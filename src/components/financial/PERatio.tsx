@@ -39,7 +39,7 @@ export const PERatio = React.forwardRef<PERatioRef, PERatioProps>(
       setLegend(getLegend(state))
     }
     return (
-      <div className="card-wrapper" {...rest}>
+      <div  {...rest}>
         <h3> {cardname}</h3>
         <div
         >
