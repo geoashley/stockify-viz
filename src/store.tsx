@@ -17,7 +17,10 @@ const initialState: Store = {
   relatedCompanies: [],
   error: null,
 };
-type Action = { type: string; payload: string|RelatedCompany|Company|Security };
+type Action = {
+  type: string;
+  payload: string | RelatedCompany[] | Company | Security;
+};
 
 export const Context = createContext<{
   state: Store;

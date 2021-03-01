@@ -1,5 +1,6 @@
 import Company from "./company.interface";
-import RelatedCompany from "./relatedCompany.interface";
+import { Ratios } from "./ratios.interface";
+
 
 export default interface Security {
     symbol: string,
@@ -12,6 +13,7 @@ export default interface Security {
     volume: string,
     sector: string,
     industry: string,
-    companyDetails: Company
+    companyDetails: Company,
+    ratios:Ratios[]
   
   }
